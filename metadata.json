@@ -1,0 +1,6 @@
+{
+  "name": "Wireless Guitar Foot Controller & Mac MIDI Bridge",
+  "description": "Standalone Swift/SwiftUI 8-footswitch wireless guitar controller for iOS and lightweight macOS CoreMIDI bridge for Logic Pro and guitar plugins, built with native Network framework and Bonjour.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

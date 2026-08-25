@@ -1,0 +1,211 @@
+import { FootswitchConfig, Bank, Preset } from '../types';
+
+export const createDefaultEightSwitches = (): FootswitchConfig[] => [
+  {
+    id: 'sw-0',
+    index: 0,
+    name: 'CLEAN',
+    subLabel: 'PC #01',
+    mode: 'Toggle',
+    ledColorHex: '#0284C7',
+    tapAction: { isEnabled: true, midiType: 'PC', channel: 1, number: 1, onValue: 127, offValue: 0 },
+    longPressAction: { isEnabled: true, midiType: 'CC', channel: 1, number: 10, onValue: 127, offValue: 0 },
+  },
+  {
+    id: 'sw-1',
+    index: 1,
+    name: 'CRUNCH',
+    subLabel: 'PC #02',
+    mode: 'Toggle',
+    ledColorHex: '#D97706',
+    tapAction: { isEnabled: true, midiType: 'PC', channel: 1, number: 2, onValue: 127, offValue: 0 },
+    longPressAction: { isEnabled: false, midiType: 'CC', channel: 1, number: 11, onValue: 127, offValue: 0 },
+  },
+  {
+    id: 'sw-2',
+    index: 2,
+    name: 'RHYTHM',
+    subLabel: 'PC #03',
+    mode: 'Toggle',
+    ledColorHex: '#DC2626',
+    tapAction: { isEnabled: true, midiType: 'PC', channel: 1, number: 3, onValue: 127, offValue: 0 },
+    longPressAction: { isEnabled: false, midiType: 'CC', channel: 1, number: 12, onValue: 127, offValue: 0 },
+  },
+  {
+    id: 'sw-3',
+    index: 3,
+    name: 'SOLO',
+    subLabel: 'NOTE #39',
+    mode: 'Toggle',
+    ledColorHex: '#7C3AED',
+    tapAction: { isEnabled: true, midiType: 'NOTE', channel: 1, number: 39, onValue: 127, offValue: 0 },
+    longPressAction: { isEnabled: true, midiType: 'CC', channel: 1, number: 23, onValue: 127, offValue: 0 },
+  },
+  {
+    id: 'sw-4',
+    index: 4,
+    name: 'DELAY',
+    subLabel: 'CC #28',
+    mode: 'Toggle',
+    ledColorHex: '#0891B2',
+    tapAction: { isEnabled: true, midiType: 'CC', channel: 1, number: 28, onValue: 127, offValue: 0 },
+    longPressAction: { isEnabled: true, midiType: 'CC', channel: 1, number: 64, onValue: 127, offValue: 0 },
+  },
+  {
+    id: 'sw-5',
+    index: 5,
+    name: 'REVERB',
+    subLabel: 'CC #29',
+    mode: 'Toggle',
+    ledColorHex: '#059669',
+    tapAction: { isEnabled: true, midiType: 'CC', channel: 1, number: 29, onValue: 127, offValue: 0 },
+    longPressAction: { isEnabled: false, midiType: 'CC', channel: 1, number: 65, onValue: 127, offValue: 0 },
+  },
+  {
+    id: 'sw-6',
+    index: 6,
+    name: 'BOOST',
+    subLabel: 'CC #30 (Mom)',
+    mode: 'Momentary',
+    ledColorHex: '#DB2777',
+    tapAction: { isEnabled: true, midiType: 'CC', channel: 1, number: 30, onValue: 127, offValue: 0 },
+    longPressAction: { isEnabled: false, midiType: 'CC', channel: 1, number: 31, onValue: 127, offValue: 0 },
+  },
+  {
+    id: 'sw-7',
+    index: 7,
+    name: 'MUTE',
+    subLabel: 'CC #07',
+    mode: 'Toggle',
+    ledColorHex: '#4F46E5',
+    tapAction: { isEnabled: true, midiType: 'CC', channel: 1, number: 7, onValue: 0, offValue: 127 },
+    longPressAction: { isEnabled: true, midiType: 'CC', channel: 1, number: 84, onValue: 127, offValue: 0 },
+  },
+];
+
+export const defaultBanks: Bank[] = [
+  {
+    id: 'bank-live',
+    name: 'LIVE',
+    description: 'Main performance board with clean, crunch, rhythm & solo leads',
+    colorTag: '#3B82F6',
+    switches: createDefaultEightSwitches(),
+  },
+  {
+    id: 'bank-song1',
+    name: 'SONG 1',
+    description: 'Heavy verse / chorus dynamics with delay spillover',
+    colorTag: '#7C3AED',
+    switches: [
+      { id: 'b2-0', index: 0, name: 'CLEAN INTRO', subLabel: 'PC #04', mode: 'Toggle', ledColorHex: '#0284C7', tapAction: { isEnabled: true, midiType: 'PC', channel: 1, number: 4, onValue: 127, offValue: 0 }, longPressAction: { isEnabled: false, midiType: 'CC', channel: 1, number: 1, onValue: 127, offValue: 0 } },
+      { id: 'b2-1', index: 1, name: 'VERSE CRUNCH', subLabel: 'PC #05', mode: 'Toggle', ledColorHex: '#D97706', tapAction: { isEnabled: true, midiType: 'PC', channel: 1, number: 5, onValue: 127, offValue: 0 }, longPressAction: { isEnabled: false, midiType: 'CC', channel: 1, number: 1, onValue: 127, offValue: 0 } },
+      { id: 'b2-2', index: 2, name: 'CHORUS WALL', subLabel: 'PC #06', mode: 'Toggle', ledColorHex: '#DC2626', tapAction: { isEnabled: true, midiType: 'PC', channel: 1, number: 6, onValue: 127, offValue: 0 }, longPressAction: { isEnabled: false, midiType: 'CC', channel: 1, number: 1, onValue: 127, offValue: 0 } },
+      { id: 'b2-3', index: 3, name: 'MAIN SOLO', subLabel: 'PC #07', mode: 'Toggle', ledColorHex: '#7C3AED', tapAction: { isEnabled: true, midiType: 'PC', channel: 1, number: 7, onValue: 127, offValue: 0 }, longPressAction: { isEnabled: false, midiType: 'CC', channel: 1, number: 1, onValue: 127, offValue: 0 } },
+      { id: 'b2-4', index: 4, name: 'DOTTED 8TH', subLabel: 'CC #24', mode: 'Toggle', ledColorHex: '#0891B2', tapAction: { isEnabled: true, midiType: 'CC', channel: 1, number: 24, onValue: 127, offValue: 0 }, longPressAction: { isEnabled: false, midiType: 'CC', channel: 1, number: 1, onValue: 127, offValue: 0 } },
+      { id: 'b2-5', index: 5, name: 'OCTAVE FUZZ', subLabel: 'CC #25', mode: 'Toggle', ledColorHex: '#B45309', tapAction: { isEnabled: true, midiType: 'CC', channel: 1, number: 25, onValue: 127, offValue: 0 }, longPressAction: { isEnabled: false, midiType: 'CC', channel: 1, number: 1, onValue: 127, offValue: 0 } },
+      { id: 'b2-6', index: 6, name: 'SOLO BOOST', subLabel: 'CC #26 (Mom)', mode: 'Momentary', ledColorHex: '#DB2777', tapAction: { isEnabled: true, midiType: 'CC', channel: 1, number: 26, onValue: 127, offValue: 0 }, longPressAction: { isEnabled: false, midiType: 'CC', channel: 1, number: 1, onValue: 127, offValue: 0 } },
+      { id: 'b2-7', index: 7, name: 'KILL SWITCH', subLabel: 'CC #07', mode: 'Momentary', ledColorHex: '#4F46E5', tapAction: { isEnabled: true, midiType: 'CC', channel: 1, number: 7, onValue: 0, offValue: 127 }, longPressAction: { isEnabled: false, midiType: 'CC', channel: 1, number: 1, onValue: 127, offValue: 0 } },
+    ],
+  },
+  {
+    id: 'bank-worship',
+    name: 'WORSHIP',
+    description: 'Ambient swells, shimmer reverbs, dual delays, transparent overdrive',
+    colorTag: '#0891B2',
+    switches: [
+      { id: 'b3-0', index: 0, name: 'PAD CLEAN', subLabel: 'PC #10', mode: 'Toggle', ledColorHex: '#0284C7', tapAction: { isEnabled: true, midiType: 'PC', channel: 1, number: 10, onValue: 127, offValue: 0 }, longPressAction: { isEnabled: false, midiType: 'CC', channel: 1, number: 1, onValue: 127, offValue: 0 } },
+      { id: 'b3-1', index: 1, name: 'EDGE DRIVE', subLabel: 'CC #14', mode: 'Toggle', ledColorHex: '#D97706', tapAction: { isEnabled: true, midiType: 'CC', channel: 1, number: 14, onValue: 127, offValue: 0 }, longPressAction: { isEnabled: false, midiType: 'CC', channel: 1, number: 1, onValue: 127, offValue: 0 } },
+      { id: 'b3-2', index: 2, name: 'STAGE 2 OD', subLabel: 'CC #15', mode: 'Toggle', ledColorHex: '#EA580C', tapAction: { isEnabled: true, midiType: 'CC', channel: 1, number: 15, onValue: 127, offValue: 0 }, longPressAction: { isEnabled: false, midiType: 'CC', channel: 1, number: 1, onValue: 127, offValue: 0 } },
+      { id: 'b3-3', index: 3, name: 'SWELL LEAD', subLabel: 'PC #11', mode: 'Toggle', ledColorHex: '#7C3AED', tapAction: { isEnabled: true, midiType: 'PC', channel: 1, number: 11, onValue: 127, offValue: 0 }, longPressAction: { isEnabled: false, midiType: 'CC', channel: 1, number: 1, onValue: 127, offValue: 0 } },
+      { id: 'b3-4', index: 4, name: 'DUAL DELAY', subLabel: 'CC #16', mode: 'Toggle', ledColorHex: '#0D9488', tapAction: { isEnabled: true, midiType: 'CC', channel: 1, number: 16, onValue: 127, offValue: 0 }, longPressAction: { isEnabled: false, midiType: 'CC', channel: 1, number: 1, onValue: 127, offValue: 0 } },
+      { id: 'b3-5', index: 5, name: 'SHIMMER CLOUD', subLabel: 'CC #17', mode: 'Toggle', ledColorHex: '#059669', tapAction: { isEnabled: true, midiType: 'CC', channel: 1, number: 17, onValue: 127, offValue: 0 }, longPressAction: { isEnabled: false, midiType: 'CC', channel: 1, number: 1, onValue: 127, offValue: 0 } },
+      { id: 'b3-6', index: 6, name: 'FREEZE HOLD', subLabel: 'CC #18 (Mom)', mode: 'Momentary', ledColorHex: '#0284C7', tapAction: { isEnabled: true, midiType: 'CC', channel: 1, number: 18, onValue: 127, offValue: 0 }, longPressAction: { isEnabled: false, midiType: 'CC', channel: 1, number: 1, onValue: 127, offValue: 0 } },
+      { id: 'b3-7', index: 7, name: 'ALL MUTE', subLabel: 'CC #07', mode: 'Toggle', ledColorHex: '#4F46E5', tapAction: { isEnabled: true, midiType: 'CC', channel: 1, number: 7, onValue: 0, offValue: 127 }, longPressAction: { isEnabled: false, midiType: 'CC', channel: 1, number: 1, onValue: 127, offValue: 0 } },
+    ],
+  },
+  {
+    id: 'bank-rock',
+    name: 'ROCK',
+    description: 'British Plexi & JCM high gain with phaser and tape delay',
+    colorTag: '#DC2626',
+    switches: [
+      { id: 'b4-0', index: 0, name: 'PLEXI CLN', subLabel: 'PC #20', mode: 'Toggle', ledColorHex: '#0284C7', tapAction: { isEnabled: true, midiType: 'PC', channel: 1, number: 20, onValue: 127, offValue: 0 }, longPressAction: { isEnabled: false, midiType: 'CC', channel: 1, number: 1, onValue: 127, offValue: 0 } },
+      { id: 'b4-1', index: 1, name: 'JCM CRUNCH', subLabel: 'PC #21', mode: 'Toggle', ledColorHex: '#D97706', tapAction: { isEnabled: true, midiType: 'PC', channel: 1, number: 21, onValue: 127, offValue: 0 }, longPressAction: { isEnabled: false, midiType: 'CC', channel: 1, number: 1, onValue: 127, offValue: 0 } },
+      { id: 'b4-2', index: 2, name: 'HOT ROD JCM', subLabel: 'PC #22', mode: 'Toggle', ledColorHex: '#DC2626', tapAction: { isEnabled: true, midiType: 'PC', channel: 1, number: 22, onValue: 127, offValue: 0 }, longPressAction: { isEnabled: false, midiType: 'CC', channel: 1, number: 1, onValue: 127, offValue: 0 } },
+      { id: 'b4-3', index: 3, name: 'LEAD BOOST', subLabel: 'PC #23', mode: 'Toggle', ledColorHex: '#DB2777', tapAction: { isEnabled: true, midiType: 'PC', channel: 1, number: 23, onValue: 127, offValue: 0 }, longPressAction: { isEnabled: false, midiType: 'CC', channel: 1, number: 1, onValue: 127, offValue: 0 } },
+      { id: 'b4-4', index: 4, name: 'PHASER 90', subLabel: 'CC #35', mode: 'Toggle', ledColorHex: '#EA580C', tapAction: { isEnabled: true, midiType: 'CC', channel: 1, number: 35, onValue: 127, offValue: 0 }, longPressAction: { isEnabled: false, midiType: 'CC', channel: 1, number: 1, onValue: 127, offValue: 0 } },
+      { id: 'b4-5', index: 5, name: 'TAPE DELAY', subLabel: 'CC #36', mode: 'Toggle', ledColorHex: '#0D9488', tapAction: { isEnabled: true, midiType: 'CC', channel: 1, number: 36, onValue: 127, offValue: 0 }, longPressAction: { isEnabled: false, midiType: 'CC', channel: 1, number: 1, onValue: 127, offValue: 0 } },
+      { id: 'b4-6', index: 6, name: 'CHORUS', subLabel: 'CC #37', mode: 'Toggle', ledColorHex: '#7C3AED', tapAction: { isEnabled: true, midiType: 'CC', channel: 1, number: 37, onValue: 127, offValue: 0 }, longPressAction: { isEnabled: false, midiType: 'CC', channel: 1, number: 1, onValue: 127, offValue: 0 } },
+      { id: 'b4-7', index: 7, name: 'TUNER/MUTE', subLabel: 'CC #84', mode: 'Toggle', ledColorHex: '#4F46E5', tapAction: { isEnabled: true, midiType: 'CC', channel: 1, number: 84, onValue: 127, offValue: 0 }, longPressAction: { isEnabled: false, midiType: 'CC', channel: 1, number: 1, onValue: 127, offValue: 0 } },
+    ],
+  },
+  {
+    id: 'bank-acoustic',
+    name: 'ACOUSTIC',
+    description: 'Body resonance IRs, gentle optical compression, analog chorus and hall reverb',
+    colorTag: '#059669',
+    switches: [
+      { id: 'b5-0', index: 0, name: 'BODY RES IR', subLabel: 'PC #30', mode: 'Toggle', ledColorHex: '#059669', tapAction: { isEnabled: true, midiType: 'PC', channel: 1, number: 30, onValue: 127, offValue: 0 }, longPressAction: { isEnabled: false, midiType: 'CC', channel: 1, number: 1, onValue: 127, offValue: 0 } },
+      { id: 'b5-1', index: 1, name: 'OPTICAL COMP', subLabel: 'CC #40', mode: 'Toggle', ledColorHex: '#0284C7', tapAction: { isEnabled: true, midiType: 'CC', channel: 1, number: 40, onValue: 127, offValue: 0 }, longPressAction: { isEnabled: false, midiType: 'CC', channel: 1, number: 1, onValue: 127, offValue: 0 } },
+      { id: 'b5-2', index: 2, name: 'ANALOG CHORUS', subLabel: 'CC #41', mode: 'Toggle', ledColorHex: '#7C3AED', tapAction: { isEnabled: true, midiType: 'CC', channel: 1, number: 41, onValue: 127, offValue: 0 }, longPressAction: { isEnabled: false, midiType: 'CC', channel: 1, number: 1, onValue: 127, offValue: 0 } },
+      { id: 'b5-3', index: 3, name: 'SOLO SHAPE', subLabel: 'CC #42', mode: 'Toggle', ledColorHex: '#D97706', tapAction: { isEnabled: true, midiType: 'CC', channel: 1, number: 42, onValue: 127, offValue: 0 }, longPressAction: { isEnabled: false, midiType: 'CC', channel: 1, number: 1, onValue: 127, offValue: 0 } },
+      { id: 'b5-4', index: 4, name: 'WARM DELAY', subLabel: 'CC #43', mode: 'Toggle', ledColorHex: '#0891B2', tapAction: { isEnabled: true, midiType: 'CC', channel: 1, number: 43, onValue: 127, offValue: 0 }, longPressAction: { isEnabled: false, midiType: 'CC', channel: 1, number: 1, onValue: 127, offValue: 0 } },
+      { id: 'b5-5', index: 5, name: 'HALL REVERB', subLabel: 'CC #44', mode: 'Toggle', ledColorHex: '#059669', tapAction: { isEnabled: true, midiType: 'CC', channel: 1, number: 44, onValue: 127, offValue: 0 }, longPressAction: { isEnabled: false, midiType: 'CC', channel: 1, number: 1, onValue: 127, offValue: 0 } },
+      { id: 'b5-6', index: 6, name: 'PIEZO BOOST', subLabel: 'CC #45 (Mom)', mode: 'Momentary', ledColorHex: '#DB2777', tapAction: { isEnabled: true, midiType: 'CC', channel: 1, number: 45, onValue: 127, offValue: 0 }, longPressAction: { isEnabled: false, midiType: 'CC', channel: 1, number: 1, onValue: 127, offValue: 0 } },
+      { id: 'b5-7', index: 7, name: 'STAGE MUTE', subLabel: 'CC #07', mode: 'Toggle', ledColorHex: '#4F46E5', tapAction: { isEnabled: true, midiType: 'CC', channel: 1, number: 7, onValue: 0, offValue: 127 }, longPressAction: { isEnabled: false, midiType: 'CC', channel: 1, number: 1, onValue: 127, offValue: 0 } },
+    ],
+  },
+];
+
+export const defaultPresets: Preset[] = [
+  {
+    id: 'preset-rock-live',
+    name: 'ROCK LIVE SET',
+    details: '5-bank arena rock & worship set with dedicated solo triggers and stereo delays',
+    globalProgramChange: {
+      isEnabled: true,
+      channel: 1,
+      programNumber: 1, // PC #01
+    },
+    banks: defaultBanks,
+    defaultBankId: 'bank-live',
+  },
+  {
+    id: 'preset-ambient-worship',
+    name: 'AMBIENT & WORSHIP',
+    details: 'Ethereal swells, cloud reverbs, dual dotted-eighth delays and transparent drive',
+    globalProgramChange: {
+      isEnabled: true,
+      channel: 1,
+      programNumber: 10, // PC #10
+    },
+    banks: [defaultBanks[2], defaultBanks[0], defaultBanks[1], defaultBanks[3], defaultBanks[4]],
+    defaultBankId: 'bank-worship',
+  },
+  {
+    id: 'preset-acoustic-session',
+    name: 'ACOUSTIC SESSION',
+    details: 'Body resonance IRs, optical studio compression, warm shimmer and gentle piezo boost',
+    globalProgramChange: {
+      isEnabled: true,
+      channel: 1,
+      programNumber: 30, // PC #30
+    },
+    banks: [defaultBanks[4], defaultBanks[0], defaultBanks[2]],
+    defaultBankId: 'bank-acoustic',
+  },
+  {
+    id: 'preset-heavy-metal',
+    name: 'METAL & HIGH-GAIN',
+    details: 'Tight modern rhythm gates, screaming hot-rod leads, octave fuzz and kill-switches',
+    globalProgramChange: {
+      isEnabled: true,
+      channel: 1,
+      programNumber: 45, // PC #45
+    },
+    banks: [defaultBanks[3], defaultBanks[1], defaultBanks[0]],
+    defaultBankId: 'bank-rock',
+  },
+];
+
+export const defaultPreset: Preset = defaultPresets[0];
